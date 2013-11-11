@@ -1,0 +1,37 @@
+{
+  "name": "handlebarsify",
+  "version": "0.0.1",
+  "description": "Transform handlebars template form browserify.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/perfectworks/handlebarsify"
+  },
+  "keywords": [
+    "browserify",
+    "handlebars"
+  ],
+  "author": "perfectworks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/perfectworks/handlebarsify/issues"
+  },
+  "dependencies": {
+    "handlebars": "~1.1.2",
+    "through": "~2.3.4"
+  },
+  "devDependencies": {
+    "browserify": "~2.35.1",
+    "mocha": "~1.14.0",
+    "grunt": "~0.4.1",
+    "grunt-browserify": "~1.2.11",
+    "underscore": "~1.5.2",
+    "grunt-contrib-qunit": "~0.3.0"
+  }
+}
