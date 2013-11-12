@@ -8,8 +8,9 @@ var Handlebarsify = function (options) {
 };
 
 Handlebarsify.prototype.transform = function (file) {
-    var options = _.defaults({
-        extensions: ['.handlebars', '.handlebar', '.hbs']
+    var options = _.extend({
+        extensions: ['.handlebars', '.handlebar', '.hbs'],
+        module: 'handlebars/dist/cjs/handlebars.runtime'
     }, this.options);
 
     if (options.extensions.indexOf(path.extname(file)) === -1) {
@@ -25,14 +26,21 @@ Handlebarsify.prototype.transform = function (file) {
         precompile = 'module.exports = Handlebars.template(' + precompile + ');';
 
         if (options.module) {
-            // use relative path to require Handlebars module
-            // file: src/a/b/c/d.handlebars
-            // module: src/d/e/Handlebars.js
-            // --> hbsModule: ../../../../lib/Handlebars.js
-            var from = path.dirname(file);
-            var hbsModule = './' + path.relative(from, options.module);
+            var hbsModule = options.module;
+            if (hbsModule[0] === '.') {
+                // use relative path to require Handlebars module
+                // file: src/a/b/c/d.handlebars
+                // module: src/d/e/Handlebars.js
+                // --> hbsModule: ../../../../lib/Handlebars.js
+                var from = path.dirname(file);
+                hbsModule = './' + path.relative(from, options.module);
+            }
 
-            precompile = 'var Handlebars = require("' + hbsModule + '");' + precompile;
+            if (hbsModule.indexOf('cjs') !== -1) {
+                precompile = 'var Handlebars = require("' + hbsModule + '").default;' + precompile;
+            } else {
+                precompile = 'var Handlebars = require("' + hbsModule + '");' + precompile;
+            }
         }
 
         this.queue(precompile);

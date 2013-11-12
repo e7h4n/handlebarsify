@@ -2,14 +2,25 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Global Handlebars</title>
-    <link rel="stylesheet" href="libs/qunit.css">
+    <title>Global Handlebars Module</title>
+    <link rel="stylesheet" href="libs/mocha.css">
 </head>
 <body>
-    <div id="qunit"></div>
-    <div id="qunit-fixture"></div>
-    <script src="libs/qunit.js"></script>
+    <div id="mocha"></div>
+    <script src="libs/expect.js"></script>
+    <script src="libs/mocha.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        mocha.setup('bdd');
+    </script>
+
     <script src="libs/handlebars.runtime.js"></script>
     <script src="dist/test.global.js"></script>
+
+    <script src="test.global.js"></script>
+    <script>
+        if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+            mocha.run();
+        }
+    </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
-test('global Handlebars', function () {
-    equal(window.test({
-        name: 'joo'
-    }), 'fake string', 'fake handlebars render should success');
+describe('handlebarsify', function () {
+    it('should render with custom handlebars module', function () {
+        expect(window.template({
+            name: 'joo'
+        })).to.be('fake string');
+    });
 });

@@ -11,6 +11,16 @@ module.exports = function (grunt) {
                     'test/dist/test.global.js': 'test/src/test.js'
                 },
                 options: {
+                    transform: [browserify.create({
+                        module: null
+                    })]
+                },
+            },
+            npm: {
+                files: {
+                    'test/dist/test.npm.js': 'test/src/test.js'
+                },
+                options: {
                     transform: [browserify]
                 },
             },
@@ -26,11 +36,16 @@ module.exports = function (grunt) {
             }
         },
 
-        qunit: {
+        mocha: {
+            options: {
+                run: true
+            },
             all: ['test/test.*.html']
         }
     });
 
     grunt.loadNpmTasks('grunt-browserify');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-mocha');
+
+    grunt.task.registerTask('test', ['browserify', 'mocha']);
 };

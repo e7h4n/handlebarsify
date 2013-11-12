@@ -2,14 +2,15 @@
 
 Transform handlebars template form browserify.
 
-## CLI Usage
+## usage
+
+Npm install first:
 
 ```
-    npm install handlebarsify
-    browserify -t handlebarsify main.js > main.bundle.js
+    npm install handlebarsify handlebars
 ```
 
-Where main.js can be:
+Then whip up a `main.js` which `require` a handlebars template `tmp.handlebars`:
 
 ```js
 var tmpl = require('./tmpl.handlebars');
@@ -24,37 +25,40 @@ And tmpl.handlebars can be:
 hello {{name}}.
 ```
 
-Notice: in cli usage, handlebarsify will *NOT* package handlebars runtime to bundle file, so you must include handlebars.runtime.js in your html manually like this:
+### CLI usage
 
-```html
-<script src="handlebars.runtime.js"></script>
-<script src="main.bundle.js"></script>
+Use `-t` flag of browserify to use it:
+
+```bash
+browserify -t handlebarsify main.js > main.bundle.js
 ```
 
-## API Usage
-
-Handlebarsify API support two transform mode: global mode and custom module mode.
-
-The behavior of global mode is same with handlebarsify CLI usage, so you need include handlebars.runtime.js manually.
+### API usage
 
 ```js
-    var handlebarsify = require('handlebarsify');
-    var browserify = require('browserify');
-    var b = browserify('./main.js');
+var handlebarsify = require('handlebarsify');
+var browserify = require('browserify');
+var b = browserify('./main.js');
 
-    b.transform(handlebarsify);
-    b.bundle().pipe(fs.createWriteStream('./main.bundle.js'));
+b.transform(handlebarsify);
+b.bundle().pipe(fs.createWriteStream('./main.bundle.js'));
 ```
 
-The custom module mode, allow you assign a Handlebars module name and bundle it.
+## Configure
+
+use `handlebarsify.create(options)` to get a configured transformer:
 
 ```js
-    var handlebarsify = require('handlebarsify');
-    var browserify = require('browserify');
-    var b = browserify('./main.js');
+var browserify = require('browserify').create({
+    extensions: ['.handlebars', '.hbs'],
+    module: 'handlebars/dist/cjs/handlebars.runtime'
+});
 
-    b.transform(handlebarsify.create({
-        module: 'handlebars-runtime'
-    });
-    b.bundle().pipe(fs.createWriteStream('./main.bundle.js'));
+// ...
+
+b.transform(handlebarsify.create(browserify);
 ```
+
+Support `options`:
+* `extensions`: handlebars file extension name list. `[default: ['.handlebars', '.hbs']]`
+* `module`: module path which point to `handlebars` or `handlebars.runtime`. `[default: 'handlebars/dist/cjs/handlebars.runtime']`

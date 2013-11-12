@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm test"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,6 @@
     "grunt": "~0.4.1",
     "grunt-browserify": "~1.2.11",
     "underscore": "~1.5.2",
-    "grunt-contrib-qunit": "~0.3.0"
+    "grunt-mocha": "~0.4.1"
   }
 }
