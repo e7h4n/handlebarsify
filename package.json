@@ -24,14 +24,14 @@
   },
   "dependencies": {
     "handlebars": "~1.1.2",
-    "through": "~2.3.4"
+    "through": "~2.3.4",
+    "underscore": "~1.5.2"
   },
   "devDependencies": {
     "browserify": "~2.35.1",
     "mocha": "~1.14.0",
     "grunt": "~0.4.1",
     "grunt-browserify": "~1.2.11",
-    "underscore": "~1.5.2",
     "grunt-mocha": "perfectworks/grunt-mocha#97dd5d476d"
   }
 }
