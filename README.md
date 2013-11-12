@@ -2,7 +2,7 @@
 
 Transform handlebars template form browserify.
 
-## usage
+## Usage
 
 Npm install first:
 
@@ -62,3 +62,7 @@ b.transform(handlebarsify.create(browserify);
 Support `options`:
 * `extensions`: handlebars file extension name list. `[default: ['.handlebars', '.hbs']]`
 * `module`: module path which point to `handlebars` or `handlebars.runtime`. `[default: 'handlebars/dist/cjs/handlebars.runtime']`
+
+## License
+
+MIT
