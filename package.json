@@ -32,6 +32,6 @@
     "grunt": "~0.4.1",
     "grunt-browserify": "~1.2.11",
     "underscore": "~1.5.2",
-    "grunt-mocha": "~0.4.1"
+    "grunt-mocha": "perfectworks/grunt-mocha#97dd5d476d"
   }
 }
