@@ -66,6 +66,10 @@ Support `options`:
 * `module`: module path which point to `handlebars` or `handlebars.runtime`. `[default: 'handlebars/dist/cjs/handlebars.runtime']`
  * If `module` is `null`, handlebarsify will not require any handlebars module. This is useful when you have a global `Handlebars` in page.
 
+## Coming feature
+
+ * SourceMap
+
 ## License
 
 MIT
