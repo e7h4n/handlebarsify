@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/perfectworks/handlebarsify.png?branch=master)](https://travis-ci.org/perfectworks/handlebarsify)
 
-Transform handlebars template form browserify. It's well tested, stable and fast.
+Transform handlebars template for [browserify]. It's well tested, stable and fast.
 
 ## Usage
 
@@ -73,3 +73,5 @@ Support `options`:
 ## License
 
 MIT
+
+[browserify]: http://browserify.org/
