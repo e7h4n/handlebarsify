@@ -1,6 +1,6 @@
 {
   "name": "handlebarsify",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Transform handlebars template form browserify.",
   "main": "index.js",
   "directories": {
