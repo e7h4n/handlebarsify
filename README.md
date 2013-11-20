@@ -51,14 +51,14 @@ b.bundle().pipe(fs.createWriteStream('./main.bundle.js'));
 use `handlebarsify.create(options)` to get a configured transformer:
 
 ```js
-var browserify = require('browserify').create({
+var handlebarsify = require('handlebarsify').create({
     extensions: ['.handlebars', '.hbs'],
     module: 'handlebars/dist/cjs/handlebars.runtime'
 });
 
 // ...
 
-b.transform(handlebarsify.create(browserify);
+b.transform(handlebarsify);
 ```
 
 Support `options`:
