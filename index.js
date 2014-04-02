@@ -33,7 +33,7 @@ Handlebarsify.prototype.transform = function (file) {
                 // module: src/d/e/Handlebars.js
                 // --> hbsModule: ../../../../lib/Handlebars.js
                 var from = path.dirname(file);
-                hbsModule = './' + path.relative(from, options.module);
+                hbsModule = './' + path.relative(from, path.resolve(options.root || '.', options.module));
             }
 
             if (hbsModule.indexOf('cjs') !== -1) {
